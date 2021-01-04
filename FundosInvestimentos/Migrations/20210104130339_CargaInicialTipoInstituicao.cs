@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FundosInvestimentos.Migrations
 {
-    public partial class Inicio : Migration
+    public partial class CargaInicialTipoInstituicao : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,9 +27,8 @@ namespace FundosInvestimentos.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    tipo = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    Tipo = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -107,6 +106,16 @@ namespace FundosInvestimentos.Migrations
                         principalTable: "Fundos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "TipoInstituicao",
+                columns: new[] { "Id", "CreatedAt", "Tipo" },
+                values: new object[,]
+                {
+                    { new Guid("cb05730e-4f5a-4e87-a208-c1f1ba86a9a1"), new DateTime(2021, 1, 4, 13, 3, 38, 934, DateTimeKind.Utc).AddTicks(6751), "Administrador" },
+                    { new Guid("26bfecb7-2344-45fc-9866-8d1a38758c72"), new DateTime(2021, 1, 4, 13, 3, 38, 934, DateTimeKind.Utc).AddTicks(8274), "Gestor" },
+                    { new Guid("8cbd14de-1983-4774-8bdd-4f73a5a75ca2"), new DateTime(2021, 1, 4, 13, 3, 38, 934, DateTimeKind.Utc).AddTicks(8297), "Distribuidor" }
                 });
 
             migrationBuilder.CreateIndex(

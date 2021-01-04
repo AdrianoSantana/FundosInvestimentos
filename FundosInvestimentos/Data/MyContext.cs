@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using FundosInvestimentos.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +18,16 @@ namespace FundosInvestimentos.Data
         {
             builder.Entity<FundoFundosDistribuidos>()
                 .HasKey(FD => new { FD.FundoId, FD.FundoDistribuidoId });
+
+            builder.Entity<TipoInstituicao>()
+                .HasData(
+                    new List<TipoInstituicao>()
+                    {
+                        new TipoInstituicao(Guid.NewGuid(),"Administrador", DateTime.UtcNow),
+                        new TipoInstituicao(Guid.NewGuid(),"Gestor", DateTime.UtcNow),
+                        new TipoInstituicao(Guid.NewGuid(),"Distribuidor", DateTime.UtcNow),
+                    }
+                );
         }
 
     }

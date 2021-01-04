@@ -1,19 +1,24 @@
+using System;
 using System.Collections.Generic;
 
 namespace FundosInvestimentos.Models
 {
-    public class TipoInstituicao : BaseModel
+    public class TipoInstituicao
     {
         public TipoInstituicao()
         {
 
         }
-        public TipoInstituicao(string tipo)
+        public TipoInstituicao(Guid id, string tipo, DateTime createdAt)
         {
-            this.tipo = tipo;
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.Tipo = tipo;
 
         }
-        public string tipo { get; set; }
+        public Guid Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string Tipo { get; set; }
         public IEnumerable<Instituicao> Instituicao { get; set; }
     }
 }
