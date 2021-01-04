@@ -1,0 +1,5 @@
+Um fundo pertence a uma instituição
+Uma instituição pode ter n fundos
+
+Um fundo pode ter vários fundos distribuidos
+um fundo distribuido pode pertencer a vários fundos
