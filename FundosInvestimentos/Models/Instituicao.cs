@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace FundosInvestimentos.Models
@@ -10,8 +11,8 @@ namespace FundosInvestimentos.Models
         }
         public string CNPJ { get; set; }
         public string RazaoSocial { get; set; }
-        public TipoInstituicao tipo { get; set; }
-
+        public TipoInstituicao TipoInstituicao { get; set; }
+        public Guid TipoInstituicaoId { get; set; }
         public IEnumerable<Fundo> Fundos { get; set; }
 
     }
