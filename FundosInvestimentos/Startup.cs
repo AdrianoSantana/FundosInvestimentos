@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FundosInvestimentos.Data;
+using FundosInvestimentos.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,7 +32,12 @@ namespace FundosInvestimentos
             services.AddDbContext<MyContext>(
                 context => context.UseNpgsql(Configuration.GetConnectionString("Default"))
             );
-            services.AddControllers();
+
+            services.AddScoped<IRepository, Repository>();
+
+            services.AddControllers().AddNewtonsoftJson(
+                options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FundosInvestimentos", Version = "v1" });
