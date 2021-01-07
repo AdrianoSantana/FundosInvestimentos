@@ -4,7 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using FundosInvestimentos.Data;
+using FundosInvestimentos.Data.Repository;
+using FundosInvestimentos.Interfaces;
+using FundosInvestimentos.Interfaces.InstituicaoInterface;
 using FundosInvestimentos.Models;
+using FundosInvestimentos.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,7 +39,8 @@ namespace FundosInvestimentos
             );
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<InstituicaoServiceInterface, InstituicaoService>();
 
             services.AddControllers().AddNewtonsoftJson(
                 options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
