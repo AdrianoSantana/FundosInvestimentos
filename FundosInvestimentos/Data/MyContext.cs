@@ -19,6 +19,7 @@ namespace FundosInvestimentos.Data
             builder.Entity<FundoFundosDistribuidos>()
                 .HasKey(FD => new { FD.FundoId, FD.FundoDistribuidoId });
 
+            // Dados inseridos automaticamente ao subir o banco
             builder.Entity<TipoInstituicao>()
                 .HasData(
                     new List<TipoInstituicao>()

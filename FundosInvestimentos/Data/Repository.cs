@@ -55,6 +55,11 @@ namespace FundosInvestimentos.Data
             }
         }
 
+        public TipoInstituicao[] GetAllTipoInstituicao()
+        {
+            return _context.TipoInstituicao.ToArray();
+        }
+
         public Instituicao GetInstituicaoById(Guid id)
         {
             try

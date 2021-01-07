@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FundosInvestimentos.Data;
 using FundosInvestimentos.Models;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,7 @@ namespace FundosInvestimentos
                 context => context.UseNpgsql(Configuration.GetConnectionString("Default"))
             );
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IRepository, Repository>();
 
             services.AddControllers().AddNewtonsoftJson(

@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FundosInvestimentos.Data;
+using FundosInvestimentos.Dtos;
 using FundosInvestimentos.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +15,11 @@ namespace FundosInvestimentos.Controllers
     public class InstituicaoController : ControllerBase
     {
         private readonly IRepository _repository;
-        public InstituicaoController(IRepository repository)
+        private readonly IMapper _mapper;
+        public InstituicaoController(IRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -75,8 +79,10 @@ namespace FundosInvestimentos.Controllers
                 return BadRequest();
             try
             {
+                var instituicoesCadastradas = _repository.GetAllInstituicao();
+                var instituicaoCadastradasRetorno = _mapper.Map<IEnumerable<InstituicaoDto>>(instituicoesCadastradas);
 
-                return Ok(_repository.GetAllInstituicao());
+                return Ok(instituicaoCadastradasRetorno);
             }
             catch (System.Exception ex)
             {

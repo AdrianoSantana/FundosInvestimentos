@@ -13,5 +13,7 @@ namespace FundosInvestimentos.Data
 
         Instituicao[] GetAllInstituicaoByTipo();
         Instituicao GetInstituicaoById(Guid id);
+
+        TipoInstituicao[] GetAllTipoInstituicao();
     }
 }

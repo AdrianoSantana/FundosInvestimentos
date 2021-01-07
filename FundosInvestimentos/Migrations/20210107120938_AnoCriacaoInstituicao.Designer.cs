@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FundosInvestimentos.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210104130339_CargaInicialTipoInstituicao")]
-    partial class CargaInicialTipoInstituicao
+    [Migration("20210107120938_AnoCriacaoInstituicao")]
+    partial class AnoCriacaoInstituicao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -108,6 +108,9 @@ namespace FundosInvestimentos.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("AnoCriacao")
+                        .HasColumnType("text");
+
                     b.Property<string>("CNPJ")
                         .HasColumnType("text");
 
@@ -149,20 +152,20 @@ namespace FundosInvestimentos.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cb05730e-4f5a-4e87-a208-c1f1ba86a9a1"),
-                            CreatedAt = new DateTime(2021, 1, 4, 13, 3, 38, 934, DateTimeKind.Utc).AddTicks(6751),
+                            Id = new Guid("00c8790c-4413-4793-80eb-63fb9eb3641b"),
+                            CreatedAt = new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(5267),
                             Tipo = "Administrador"
                         },
                         new
                         {
-                            Id = new Guid("26bfecb7-2344-45fc-9866-8d1a38758c72"),
-                            CreatedAt = new DateTime(2021, 1, 4, 13, 3, 38, 934, DateTimeKind.Utc).AddTicks(8274),
+                            Id = new Guid("dc3439b0-b07e-456b-b5e8-9b11c37ee1b2"),
+                            CreatedAt = new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(6749),
                             Tipo = "Gestor"
                         },
                         new
                         {
-                            Id = new Guid("8cbd14de-1983-4774-8bdd-4f73a5a75ca2"),
-                            CreatedAt = new DateTime(2021, 1, 4, 13, 3, 38, 934, DateTimeKind.Utc).AddTicks(8297),
+                            Id = new Guid("a61fb58f-4480-49bc-aec4-de7c7cd2994c"),
+                            CreatedAt = new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(6772),
                             Tipo = "Distribuidor"
                         });
                 });
