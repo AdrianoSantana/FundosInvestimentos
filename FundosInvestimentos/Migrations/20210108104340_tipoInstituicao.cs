@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FundosInvestimentos.Migrations
 {
-    public partial class AnoCriacaoInstituicao : Migration
+    public partial class tipoInstituicao : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,8 +27,9 @@ namespace FundosInvestimentos.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Tipo = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Tipo = table.Column<string>(type: "text", nullable: true)
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,12 +112,12 @@ namespace FundosInvestimentos.Migrations
 
             migrationBuilder.InsertData(
                 table: "TipoInstituicao",
-                columns: new[] { "Id", "CreatedAt", "Tipo" },
+                columns: new[] { "Id", "CreatedAt", "Tipo", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { new Guid("00c8790c-4413-4793-80eb-63fb9eb3641b"), new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(5267), "Administrador" },
-                    { new Guid("dc3439b0-b07e-456b-b5e8-9b11c37ee1b2"), new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(6749), "Gestor" },
-                    { new Guid("a61fb58f-4480-49bc-aec4-de7c7cd2994c"), new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(6772), "Distribuidor" }
+                    { new Guid("d525c7b9-1aab-4fb0-83df-b73bc35e689d"), new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(4638), "Administrador", new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(4638) },
+                    { new Guid("30f7d1fc-cd61-4dcf-95d3-924c0067adf9"), new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6751), "Gestor", new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6751) },
+                    { new Guid("872470d4-b566-465a-a1fc-783a3fbb65f3"), new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6775), "Distribuidor", new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6775) }
                 });
 
             migrationBuilder.CreateIndex(

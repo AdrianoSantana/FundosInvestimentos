@@ -143,6 +143,9 @@ namespace FundosInvestimentos.Migrations
                     b.Property<string>("Tipo")
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
                     b.HasKey("Id");
 
                     b.ToTable("TipoInstituicao");
@@ -150,21 +153,24 @@ namespace FundosInvestimentos.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("00c8790c-4413-4793-80eb-63fb9eb3641b"),
-                            CreatedAt = new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(5267),
-                            Tipo = "Administrador"
+                            Id = new Guid("d525c7b9-1aab-4fb0-83df-b73bc35e689d"),
+                            CreatedAt = new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(4638),
+                            Tipo = "Administrador",
+                            UpdatedAt = new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(4638)
                         },
                         new
                         {
-                            Id = new Guid("dc3439b0-b07e-456b-b5e8-9b11c37ee1b2"),
-                            CreatedAt = new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(6749),
-                            Tipo = "Gestor"
+                            Id = new Guid("30f7d1fc-cd61-4dcf-95d3-924c0067adf9"),
+                            CreatedAt = new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6751),
+                            Tipo = "Gestor",
+                            UpdatedAt = new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6751)
                         },
                         new
                         {
-                            Id = new Guid("a61fb58f-4480-49bc-aec4-de7c7cd2994c"),
-                            CreatedAt = new DateTime(2021, 1, 7, 12, 9, 38, 180, DateTimeKind.Utc).AddTicks(6772),
-                            Tipo = "Distribuidor"
+                            Id = new Guid("872470d4-b566-465a-a1fc-783a3fbb65f3"),
+                            CreatedAt = new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6775),
+                            Tipo = "Distribuidor",
+                            UpdatedAt = new DateTime(2021, 1, 8, 10, 43, 39, 784, DateTimeKind.Utc).AddTicks(6775)
                         });
                 });
 

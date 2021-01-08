@@ -7,6 +7,7 @@ using FundosInvestimentos.Data;
 using FundosInvestimentos.Data.Repository;
 using FundosInvestimentos.Interfaces;
 using FundosInvestimentos.Interfaces.InstituicaoInterface;
+using FundosInvestimentos.Interfaces.TipoInstituicaoInterface;
 using FundosInvestimentos.Models;
 using FundosInvestimentos.Service;
 using Microsoft.AspNetCore.Builder;
@@ -41,6 +42,7 @@ namespace FundosInvestimentos
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddScoped<InstituicaoServiceInterface, InstituicaoService>();
+            services.AddScoped<TipoInstituicaoInterface, TipoInstituicaoService>();
 
             services.AddControllers().AddNewtonsoftJson(
                 options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
