@@ -74,5 +74,21 @@ namespace FundosInvestimentos.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            try
+            {
+                return Ok(await _service.DeleteInstituicao(id));
+            }
+            catch (System.Exception ex)
+            {
+
+                return StatusCode(500, ex.Message);
+            }
+        }
+
     }
 }
