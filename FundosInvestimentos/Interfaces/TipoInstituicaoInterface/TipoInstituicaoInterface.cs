@@ -9,5 +9,7 @@ namespace FundosInvestimentos.Interfaces.TipoInstituicaoInterface
     {
         public Task<IEnumerable<TipoInstituicao>> GetAllTiposInstituicao();
         Task<TipoInstituicao> GetTipoInstituicaoByName(string tipoInstituicao);
+
+        TipoInstituicao GetTipoInstituicaoById(Guid id);
     }
 }

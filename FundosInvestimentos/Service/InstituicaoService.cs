@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using FundosInvestimentos.Data;
 using FundosInvestimentos.Dtos.Instituicao;
 using FundosInvestimentos.Interfaces;
 using FundosInvestimentos.Interfaces.InstituicaoInterface;
 using FundosInvestimentos.Interfaces.TipoInstituicaoInterface;
 using FundosInvestimentos.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FundosInvestimentos.Service
 {
@@ -16,11 +18,14 @@ namespace FundosInvestimentos.Service
         private IMapper _mapper;
 
         private readonly TipoInstituicaoInterface _instituicaoService;
-        public InstituicaoService(IRepository<Instituicao> repository, IMapper mapper, TipoInstituicaoInterface instituicaoService)
+
+        private readonly MyContext _mycontext;
+        public InstituicaoService(IRepository<Instituicao> repository, IMapper mapper, TipoInstituicaoInterface instituicaoService, MyContext myContext)
         {
             _repository = repository;
             _mapper = mapper;
             _instituicaoService = instituicaoService;
+            _mycontext = myContext;
         }
         public async Task<bool> DeleteInstituicao(Guid id)
         {
@@ -29,7 +34,8 @@ namespace FundosInvestimentos.Service
 
         public async Task<IEnumerable<Instituicao>> GetAllInstituicao()
         {
-            return await _repository.SelectAsync();
+            var instituicao = await _mycontext.Instituicao.Include(x => x.TipoInstituicao).ToListAsync();
+            return instituicao;
         }
 
         public async Task<Instituicao> GetInstituicaoById(Guid id)

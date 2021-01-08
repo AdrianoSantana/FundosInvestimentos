@@ -46,6 +46,11 @@ namespace FundosInvestimentos.Data.Repository
             return await _dataset.FirstOrDefaultAsync(entidade => entidade.Id == id);
         }
 
+        public T Select(Guid id)
+        {
+            return _dataset.FirstOrDefault(entidade => entidade.Id == id);
+        }
+
         public async Task<IEnumerable<T>> SelectAsync()
         {
             return await _dataset.ToListAsync();

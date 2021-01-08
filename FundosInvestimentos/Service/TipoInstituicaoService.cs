@@ -15,6 +15,11 @@ namespace FundosInvestimentos.Service
         {
             _repository = repository;
         }
+        public TipoInstituicao GetTipoInstituicaoById(Guid id)
+        {
+            var tipoInstituicao = _repository.Select(id);
+            return tipoInstituicao;
+        }
 
         public async Task<TipoInstituicao> GetTipoInstituicaoByName(string tipoInstituicao)
         {

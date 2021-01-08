@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FundosInvestimentos.Interfaces.TipoInstituicaoInterface;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,13 @@ namespace FundosInvestimentos.Controllers
         public async Task<IActionResult> GetAllTipos()
         {
             return Ok(await _tipoInstituicaoService.GetAllTiposInstituicao());
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            return Ok(_tipoInstituicaoService.GetTipoInstituicaoById(id));
         }
     }
 }

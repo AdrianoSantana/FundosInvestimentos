@@ -14,6 +14,7 @@ namespace FundosInvestimentos.Interfaces
 
         Task<T> SelectAsync(Guid id);
 
+        T Select(Guid id);
         Task<IEnumerable<T>> SelectAsync();
     }
 }
